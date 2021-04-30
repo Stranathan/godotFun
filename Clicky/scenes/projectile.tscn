@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://shaders/projectile.shader" type="Shader" id=2]
+
+
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/_PerlinPrecision = 8.0
+shader_param/_PerlinOctaves = 8.0
+shader_param/_PerlinSeed = 0.0
+
+[node name="aProjectile" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+position = Vector2( 0.235962, 14.866 )
+texture = ExtResource( 1 )

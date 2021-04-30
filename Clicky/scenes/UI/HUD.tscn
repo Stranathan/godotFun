@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/UI/resources.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/UI/hotkeys.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/UI/radar.tscn" type="PackedScene" id=3]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="resources" parent="." instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -203.0
+margin_top = 16.0
+margin_right = -16.0
+margin_bottom = 89.0
+
+[node name="hotkeys" parent="." instance=ExtResource( 2 )]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = -876.0
+margin_bottom = -520.0
+
+[node name="radar" parent="." instance=ExtResource( 3 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -112.0
+margin_right = 48.0
+margin_bottom = -72.0

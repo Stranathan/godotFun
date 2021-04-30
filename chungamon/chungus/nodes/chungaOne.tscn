@@ -1,0 +1,149 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://shaders/chungaOneAttack.shader" type="Shader" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://shaders/chungaOne.shader" type="Shader" id=3]
+[ext_resource path="res://scripts/chungaOne.gd" type="Script" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 26.6914, 26.5817 )
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/attackTimer = 50.0
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 1 )
+shader_param/attackTimer = 50.0
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 31.1104, 29.7773 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "attack"
+length = 1.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.71, 0.81, 0.91, 1.01 ),
+"transitions": PoolRealArray( 4, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 0 ), Vector2( 25, 7.45057e-06 ), Vector2( 0, -25 ), Vector2( -25, 0 ), Vector2( 0, 25 ), Vector2( 25, 0 ), Vector2( 5, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("attackSprite:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.71, 0.81, 0.91, 1.01 ),
+"transitions": PoolRealArray( 12, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.05, 0.05 ), Vector2( 0.25, 0.25 ), Vector2( 0.2, 0.2 ), Vector2( 0.15, 0.15 ), Vector2( 0.1, 0.1 ), Vector2( 0.05, 0.05 ), Vector2( 0.05, 0.05 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("attackSprite:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.71, 0.81, 0.91, 1.01 ),
+"transitions": PoolRealArray( 12, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 2.68221e-05, -90.0, -180.0, -270.0, -360.0, 0.0 ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "attack"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "attack"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=10]
+blend_point_0/node = SubResource( 6 )
+blend_point_0/pos = Vector2( 0, 1 )
+blend_point_1/node = SubResource( 7 )
+blend_point_1/pos = Vector2( -1, 0 )
+blend_point_2/node = SubResource( 8 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 9 )
+blend_point_3/pos = Vector2( 0, -1 )
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+states/Attack/node = SubResource( 10 )
+states/Attack/position = Vector2( 290, 91 )
+states/Idle/node = SubResource( 11 )
+states/Idle/position = Vector2( 472, 92 )
+transitions = [ "Attack", "Idle", SubResource( 12 ), "Idle", "Attack", SubResource( 13 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+
+[node name="chungaOne" type="KinematicBody2D"]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 0.1, 0.1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+
+[node name="attackSprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( 5, 0 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="attackSprite" groups=[
+"attackableByPlayerChungamon",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackSprite/Area2D"]
+shape = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/attack = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 14 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 15 )
+parameters/Attack/blend_position = Vector2( 0, 0 )
+parameters/Idle/blend_position = Vector2( 0, 0 )

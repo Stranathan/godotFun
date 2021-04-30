@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://misc/themes/dynamicFonts/startMenuDyanmicFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/startScreen.gd" type="Script" id=2]
+
+[node name="setUp" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -1.0
+margin_bottom = -1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="createServer" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -87.0
+margin_top = -56.0
+margin_right = 87.0
+margin_bottom = -24.0
+custom_fonts/font = ExtResource( 1 )
+text = "Create Server"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="joinServer" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -73.0
+margin_top = -16.0
+margin_right = 73.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
+text = "Join Server"
+
+[node name="serverIPAddress" type="LineEdit" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.0
+margin_top = -122.0
+margin_right = 105.0
+margin_bottom = -86.0
+custom_fonts/font = ExtResource( 1 )
+placeholder_text = "Enter IP Address"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="deviceIPAddress" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = 121.0
+margin_right = 20.0
+margin_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="createServer" to="." method="_on_createServer_pressed"]
+[connection signal="pressed" from="joinServer" to="." method="_on_joinServer_pressed"]

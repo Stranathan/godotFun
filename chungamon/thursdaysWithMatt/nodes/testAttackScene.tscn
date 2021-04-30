@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://nodes/linkish.tscn" type="PackedScene" id=1]
+[ext_resource path="res://nodes/enemyBro.tscn" type="PackedScene" id=2]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="world" type="Node2D"]
+
+[node name="enemyBro" parent="." instance=ExtResource( 2 )]
+position = Vector2( 171.053, 134.08 )
+
+[node name="linkish" parent="." instance=ExtResource( 1 )]
+position = Vector2( 66.3719, 55.6812 )
+
+[node name="Sprite" parent="linkish" index="0"]
+region_rect = Rect2( 151, 2, 19, 23 )
+
+[node name="AnimationTree" parent="linkish" index="2"]
+parameters/playback = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="linkish" index="3"]
+position = Vector2( 0, 0.125 )
+
+[editable path="linkish"]

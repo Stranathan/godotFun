@@ -1,0 +1,455 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://shaders/ThePlayer.tres" type="Material" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://scripts/ThePlayer.gd" type="Script" id=3]
+[ext_resource path="res://shaders/playerAttackSprite.shader" type="Shader" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 5.3855, 6.14522 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "playerAttackDown"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 10 ), Vector2( 0, 40 ), Vector2( 0, 10 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("attackSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "playerAttackDownLeft"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -9, 9 ), Vector2( -30.21, 30.21 ), Vector2( -9, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("attackSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "playerAttackDownRight"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, 9 ), Vector2( 30.21, 30.21 ), Vector2( 9, 9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("attackSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, 0 ), Vector2( -40, 0 ), Vector2( -10, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("attackSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, 0 ), Vector2( 40, 0 ), Vector2( 10, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("attackSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -10 ), Vector2( 0, -40 ), Vector2( 0, -10 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("attackSprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "playerAttackUpLeft"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -9, -9 ), Vector2( -30.21, -30.21 ), Vector2( -9, -9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("attackSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "playerAttackUpRight"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("attackSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 12, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9, -9 ), Vector2( 30.21, -30.21 ), Vector2( 9, -9 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("attackSprite:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "attackFinished"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = ExtResource( 4 )
+shader_param/attackTimer = 50.0
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 31.3623, 30.7322 )
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "playerAttackLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "playerAttackUp"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "playerAttackRight"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "playerAttackDown"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "playerAttackUpLeft"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "playerAttackUpRight"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "playerAttackDownRight"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "playerAttackDownLeft"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=20]
+blend_point_0/node = SubResource( 12 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 13 )
+blend_point_1/pos = Vector2( 0, 1 )
+blend_point_2/node = SubResource( 14 )
+blend_point_2/pos = Vector2( 1, 0 )
+blend_point_3/node = SubResource( 15 )
+blend_point_3/pos = Vector2( 0, -1 )
+blend_point_4/node = SubResource( 16 )
+blend_point_4/pos = Vector2( -0.71, 0.71 )
+blend_point_5/node = SubResource( 17 )
+blend_point_5/pos = Vector2( 0.71, 0.71 )
+blend_point_6/node = SubResource( 18 )
+blend_point_6/pos = Vector2( 0.71, -0.71 )
+blend_point_7/node = SubResource( 19 )
+blend_point_7/pos = Vector2( -0.71, -0.71 )
+min_space = Vector2( -2, -1 )
+max_space = Vector2( 2, 1 )
+blend_mode = 1
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachine" id=24]
+states/Attack/node = SubResource( 20 )
+states/Attack/position = Vector2( 434, 113 )
+states/Idle/node = SubResource( 21 )
+states/Idle/position = Vector2( 605, 113 )
+transitions = [ "Attack", "Idle", SubResource( 22 ), "Idle", "Attack", SubResource( 23 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
+
+[node name="ThePlayer" type="KinematicBody2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 1 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/playerAttackDown = SubResource( 2 )
+anims/playerAttackDownLeft = SubResource( 3 )
+anims/playerAttackDownRight = SubResource( 4 )
+anims/playerAttackLeft = SubResource( 5 )
+anims/playerAttackRight = SubResource( 6 )
+anims/playerAttackUp = SubResource( 7 )
+anims/playerAttackUpLeft = SubResource( 8 )
+anims/playerAttackUpRight = SubResource( 9 )
+
+[node name="attackSprite" type="Sprite" parent="."]
+material = SubResource( 10 )
+position = Vector2( 0, 10 )
+scale = Vector2( 0.18, 0.18 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="attackSprite" groups=[
+"attackableByPlayerChungamon",
+]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attackSprite/Area2D"]
+shape = SubResource( 11 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 24 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 25 )
+parameters/Attack/blend_position = Vector2( -0.0729247, -1.34483 )
+parameters/Idle/blend_position = Vector2( 0, 0 )

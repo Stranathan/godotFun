@@ -1,0 +1,5 @@
+enum playerStates {MOVE, ROLL, ATTACK, PARRY, DEAD}
+
+enum enemyStates {IDLE, SEEK, FLEE, ATTACK, DEAD}
+
+const PLAYER_AND_CHUNGAMON_MAX_SPEED = 200

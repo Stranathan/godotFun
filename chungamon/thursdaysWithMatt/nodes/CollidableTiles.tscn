@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scripts/miscSprites/World/CliffTileset.png" type="Texture" id=1]
+[ext_resource path="res://sprites/overworld.png" type="Texture" id=2]
+
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 21.6863, 46.6894 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 63.1501, 9.28834 )
+
+[node name="NonCollidableTiles" type="Node2D"]
+
+[node name="rockVertical" type="Sprite" parent="."]
+position = Vector2( 132.076, 0 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 170, 41, 45, 95 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rockVertical"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rockVertical/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="rockHorizontal" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 1, 79, 128, 20 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="rockHorizontal"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rockHorizontal"]
+shape = SubResource( 2 )

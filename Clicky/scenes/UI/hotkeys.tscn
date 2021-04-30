@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/UI/rocketHotkey.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/UI/clickyHotkey.tscn" type="PackedScene" id=3]
+
+[node name="hotkeys" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -892.0
+margin_bottom = -536.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clickyHotkey" parent="HBoxContainer" instance=ExtResource( 3 )]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="rocketHotkey" parent="HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 68.0
+margin_right = 132.0
+margin_bottom = 64.0
